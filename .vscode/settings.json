@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [
+        "202202_Rock_Paper_Scissors"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
