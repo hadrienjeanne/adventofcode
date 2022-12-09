@@ -6,7 +6,7 @@ from aocd.models import Puzzle
 # from anytree import Node, RenderTree
 from treelib import Node, Tree
 
-puzzle = Puzzle(year=2022, day=8)
+puzzle = Puzzle(year=2022, day=9)
 
 def parse(puzzle_input):
     """Parse input."""
