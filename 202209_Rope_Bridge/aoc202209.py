@@ -6,56 +6,6 @@ from aocd.models import Puzzle
 
 puzzle = Puzzle(year=2022, day=9)
 
-# class Rope:
-#     def __init__(self, size) -> None:
-#         self.grid = ['.' * size] * size
-#         self.head = [size//2, size//2]
-#         self.tail = [size//2, size//2]_
-#         # self.tail = [[size//2, size//2] * 9]
-
-#     def __str__(self) -> str:
-#         output = ""
-#         for row, line in enumerate(self.grid):
-#             for col, char in enumerate(line):                
-#                 if col == self.head[0] and row == len(self.grid) - self.head[1] - 1:
-#                     output += 'H'
-#                 elif col == self.tail[0] and row == len(self.grid[0]) - self.tail[1] - 1:
-#                     output += 'T'
-#                 else:
-#                     output += char
-#             output += '\n'
-#         return output
-                
-#     def move_head(self, direction):
-#         """moves the head one step in the direction dir"""
-#         if direction== 'U':
-#             self.head[1] += 1
-#         elif direction == 'D':
-#             self.head[1] -= 1
-#         elif direction == 'L':
-#             self.head[0] -= 1
-#         elif direction == 'R':
-#             self.head[0] += 1
-
-#     def update_tail(self):
-#         """updates the tail position depending on the head position"""
-#         if abs(self.head[0] - self.tail[0]) == 2:
-#             self.tail[0] += (self.head[0] - self.tail[0]) // 2
-#             if abs(self.head[1] - self.tail[1]) == 1:
-#                 self.tail[1] += (self.head[1] - self.tail[1])
-#         if abs(self.head[1] - self.tail[1]) == 2:
-#             self.tail[1] += (self.head[1] - self.tail[1]) // 2
-#             if abs(self.head[0] - self.tail[0]) == 1:
-#                 self.tail[0] += (self.head[0] - self.tail[0])
-
-#         self.mark_visited(self.tail[0], self.tail[1])
-
-#     def mark_visited(self, col, row):
-#         """marks the position in the grid by a #"""
-#         new_str = self.grid[len(self.grid) - row - 1][0:col] + '#' + self.grid[len(self.grid) - row - 1][col+1:]
-#         self.grid[len(self.grid) - row - 1] = new_str
-         
-
 class Rope:
     def __init__(self, size, ropesize) -> None:
         self.grid = ['.' * size] * size

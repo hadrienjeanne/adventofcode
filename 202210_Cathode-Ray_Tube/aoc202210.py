@@ -46,7 +46,7 @@ def part2(data):
 
     for instr in data:        
         if instr[0] == 'noop':
-            if cycle == register_X-1 or cycle == register_X or cycle == register_X+1:
+            if abs(cycle - register_X) < 2:
                 screen += '#'
             else:
                 screen += '.'
@@ -56,7 +56,7 @@ def part2(data):
                 cycle = 0
         elif instr[0] == 'addx':
             for i in range(2):
-                if cycle == register_X-1 or cycle == register_X or cycle == register_X+1:
+                if abs(cycle - register_X) < 2:
                     screen += '#'
                 else:
                     screen += '.'
