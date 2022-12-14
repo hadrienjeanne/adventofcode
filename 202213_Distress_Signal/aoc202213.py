@@ -1,7 +1,7 @@
 # aoc_template.py
 
 import functools
-import math
+from ast import literal_eval
 import pathlib
 import sys
 from aocd.models import Puzzle
@@ -11,7 +11,7 @@ puzzle = Puzzle(year=2022, day=13)
 
 def parse(puzzle_input):
     """Parse input."""
-    return [[eval(l) for l in pair.split('\n')] for pair in puzzle_input.split('\n\n')]
+    return [[literal_eval(l) for l in pair.split('\n')] for pair in puzzle_input.split('\n\n')]
 
 def sign(l, r):
     if l < r:
@@ -42,13 +42,13 @@ def compare(left, right):
     return sign(len(left), len(right)) # unequal array length
 
 def part1(data):
-    """Solve part 1."""     
-    sum = 0
+    """Solve part 1."""
+    sum_packets = 0
     for i, pair in enumerate(data):
         print(compare(pair[0], pair[1]))
         if compare(pair[0], pair[1]) == 1:
-            sum += i+1
-    return sum
+            sum_packets += i+1
+    return sum_packets
 
 
 def part2(data):
@@ -58,12 +58,11 @@ def part2(data):
         new_list.append(pair[0])
         new_list.append(pair[1])
     sorted_list = sorted(new_list, key=functools.cmp_to_key(compare), reverse=True)
-    return (sorted_list.index([[2]]) + 1) * (sorted_list.index([[6]]) + 1) 
-    
+    return (sorted_list.index([[2]]) + 1) * (sorted_list.index([[6]]) + 1)
 
 def solve(puzzle_input):
     """Solve the puzzle for the given input."""
-    data = parse(puzzle_input)    
+    data = parse(puzzle_input)
     solution1 = part1(data)
     solution2 = part2(data)
     return solution1, solution2
