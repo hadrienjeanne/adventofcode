@@ -13,16 +13,17 @@ def example1():
     return aoc.parse(puzzle_input)
 
 # @pytest.mark.skip(reason="Not implemented")
-def test_parse_example1(example1):
+def test_parse_example1(example):
     """Test that input is parsed properly."""
-    assert example1 == [[['498', '4'], ['498', '6'], ['496', '6']], [['503', '4'], ['502', '4'], ['502', '9'], ['494', '9']]]
+    assert example == [[['498', '4'], ['498', '6'], ['496', '6']], \
+    [['503', '4'], ['502', '4'], ['502', '9'], ['494', '9']]]
 
 # @pytest.mark.skip(reason="Not implemented")
-def test_part1_example1(example1):
+def test_part1_example1(example):
     """Test part 1 on example input."""
-    assert aoc.part1(example1) == 24
+    assert aoc.part1(example) == 24
 
 # @pytest.mark.skip(reason="Not implemented")
-def test_part2_example1(example1):
+def test_part2_example1(example):
     """Test part 2 on example input."""
-    assert aoc.part2(example1) == 93
+    assert aoc.part2(example) == 93

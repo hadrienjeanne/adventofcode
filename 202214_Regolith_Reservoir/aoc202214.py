@@ -9,12 +9,10 @@ from aocd.models import Puzzle
 puzzle = Puzzle(year=2022, day=14)
 
 
-def parse(puzzle_input):
+def parse(puzzle_input_data):
     """Parse input."""
-    output = [[l.strip().split(',') for l in pair.split('->')] for pair in puzzle_input.split('\n')]
-    # [[line.strip()] for line in puzzle_input.split('\n')]
+    output = [[l.strip().split(',') for l in pair.split('->')] for pair in puzzle_input_data.split('\n')]
     return output
-    #map(int, [l.strip().split(',') for l in pair.split('->')]) for pair in puzzle_input.split('\n')
 
 def add_rocks(cavern: dict, rocks: str) -> dict:
     """Add rocks (#) into the dictionary and return the modified dictionary"""
@@ -145,20 +143,19 @@ def part2(data):
     print(f"{part_two_sand} grains of sand fell before plugging the source.")
     return part_two_sand
 
-def solve(puzzle_input):
+def solve(puzzle_input_data):
     """Solve the puzzle for the given input."""
-    data = parse(puzzle_input)
+    data = parse(puzzle_input_data)
     solution1 = part1(data)
     solution2 = part2(data)
     return solution1, solution2
 
 if __name__ == "__main__":
-    """Main function."""
     # either input via a file given in argument or via aoc input plugin
     if len(sys.argv) > 1:
         for path in sys.argv[1:]:
             print(f"{path}:")
-            puzzle_input = pathlib.Path(path).read_text().strip()
+            puzzle_input = pathlib.Path(path).read_text(encoding='UTF-8').strip()
     else:
         puzzle_input = puzzle.input_data
 
