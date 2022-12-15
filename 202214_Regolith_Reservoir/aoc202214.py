@@ -11,7 +11,8 @@ puzzle = Puzzle(year=2022, day=14)
 
 def parse(puzzle_input_data):
     """Parse input."""
-    output = [[l.strip().split(',') for l in pair.split('->')] for pair in puzzle_input_data.split('\n')]
+    output = [[l.strip().split(',') for l in pair.split('->')]\
+         for pair in puzzle_input_data.split('\n')]
     return output
 
 def add_rocks(cavern: dict, rocks: str) -> dict:
@@ -57,16 +58,19 @@ def sand_simulation(cavern: dict, lowest_rock_y: int) -> int:
         falling = True
         sand_coordinate = [500, 0]
         while falling:
-            if cavern[(sand_coordinate[0], sand_coordinate[1] + 1)] not in ["#", "o"]:  # nothing below
+            # nothing below
+            if cavern[(sand_coordinate[0], sand_coordinate[1] + 1)] not in ["#", "o"]:
                 sand_coordinate[1] += 1
                 if sand_coordinate[1] > lowest_rock_y:  # infinite falling
                     return sand_tally
-            elif cavern[(sand_coordinate[0] - 1, sand_coordinate[1] + 1)] not in ["#", "o"]:  # nothing diag left -> fall
+            # nothing diag left -> fall
+            elif cavern[(sand_coordinate[0] - 1, sand_coordinate[1] + 1)] not in ["#", "o"]:
                 sand_coordinate[1] += 1
                 sand_coordinate[0] -= 1
                 if sand_coordinate[1] > lowest_rock_y:  # infinite falling
                     return sand_tally
-            elif cavern[(sand_coordinate[0] + 1, sand_coordinate[1] + 1)] not in ["#", 'o']:  # nothin diag right -> fall
+            # nothin diag right -> fall
+            elif cavern[(sand_coordinate[0] + 1, sand_coordinate[1] + 1)] not in ["#", 'o']:
                 sand_coordinate[1] += 1
                 sand_coordinate[0] += 1
                 if sand_coordinate[1] > lowest_rock_y:  # infinite falling
@@ -87,14 +91,16 @@ def sand_simulation_2(cavern: dict, lowest_rock_y: int) -> int:
         falling = True
         sand_coordinate = [500, 0]
         while falling:
-            if cavern[(sand_coordinate[0], sand_coordinate[1] + 1)] not in ["#", "o"]:  # nothing below
+            # nothing below
+            if cavern[(sand_coordinate[0], sand_coordinate[1] + 1)] not in ["#", "o"]:
                 if (sand_coordinate[1] + 1) == part_two_floor:
                     cavern[(sand_coordinate[0], sand_coordinate[1])] = 'o'
                     falling = False
                     sand_tally += 1
                 else:
                     sand_coordinate[1] += 1
-            elif cavern[(sand_coordinate[0] - 1, sand_coordinate[1] + 1)] not in ["#", "o"]:  # nothing diag left -> fall
+            # nothing diag left -> fall
+            elif cavern[(sand_coordinate[0] - 1, sand_coordinate[1] + 1)] not in ["#", "o"]:
                 if (sand_coordinate[1] + 1) == part_two_floor:
                     cavern[(sand_coordinate[0], sand_coordinate[1])] = 'o'
                     falling = False
@@ -102,7 +108,8 @@ def sand_simulation_2(cavern: dict, lowest_rock_y: int) -> int:
                 else:
                     sand_coordinate[1] += 1
                     sand_coordinate[0] -= 1
-            elif cavern[(sand_coordinate[0] + 1, sand_coordinate[1] + 1)] not in ["#", 'o']:  # nothin diag right -> fall
+            # nothin diag right -> fall
+            elif cavern[(sand_coordinate[0] + 1, sand_coordinate[1] + 1)] not in ["#", 'o']:
                 if (sand_coordinate[1] + 1) == part_two_floor:
                     cavern[(sand_coordinate[0], sand_coordinate[1])] = 'o'
                     falling = False
@@ -128,7 +135,7 @@ def part1(data):
     lowest_rock = find_lowest_rock(cavern)
     print(f"lowest rock {lowest_rock}")
     sand_before_abyss = sand_simulation(cavern, lowest_rock)
-    print(f"{sand_before_abyss} grains of sand fell before the rest started flowing into the abyss.")
+    print(f"{sand_before_abyss} grains of sand fell before flowing into the abyss.")
     return sand_before_abyss
 
 
